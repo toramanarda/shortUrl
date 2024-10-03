@@ -281,7 +281,7 @@ button:hover {
 
 #shortened-link {
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #e1c5e1;
   padding-block: 18px;
   flex-direction: column;
   padding-inline: 32px;
