@@ -1,5 +1,8 @@
 "use client";
 import { useState } from 'react';
+import { z } from 'zod';
+
+const urlSchema = z.string().url("Geçerli bir URL giriniz!");
 
 const LinkArea = () => {
   const [longUrl, setLongUrl] = useState('');
@@ -10,6 +13,13 @@ const LinkArea = () => {
     e.preventDefault();
     setError(null);
 
+    // Zod ile URL doğrulaması
+    const result = urlSchema.safeParse(longUrl);
+    if (!result.success) {
+      setError(result.error.errors[0].message);
+      return;
+    }
+
     try {
       const generatedShortUrl = generateShortUrl();
 
@@ -17,7 +27,7 @@ const LinkArea = () => {
         method: "POST",
         headers: {
           "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXRqbWR5b3RxaWdycmxycnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc4MDI2NjUsImV4cCI6MjA0MzM3ODY2NX0.QcXRZ82w4MCZ_UlpAsZCxHLlAgoHh6YNz3FYC9d6MW8",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXRqbWR5b3RxaWdycmxycnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc4MDI2NjUsImV4cCI6MjA0MzM3ODY2NX0.QcXRZ82w4MCZ_UlpAsZCxHLlAgoHh6YNz3FYC9d6MW8",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXRqbWR5b3RxaWdycmxycnNiIiwicm9zZSI6ImFub24iLCJpYXQiOjE3Mjc4MDI2NjUsImV4cCI6MjA0MzM3ODY2NX0.QcXRZ82w4MCZ_UlpAsZCxHLlAgoHh6YNz3FYC9d6MW8",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -44,7 +54,6 @@ const LinkArea = () => {
     <div className="linkArea">
       <form id="link-form" onSubmit={handleSubmit}>
         <input
-          type="url"
           id="link-input"
           placeholder="Shorten a link here..."
           value={longUrl}
