@@ -13,7 +13,6 @@ const LinkArea = () => {
     e.preventDefault();
     setError(null);
 
-    // Zod ile URL doğrulaması
     const result = urlSchema.safeParse(longUrl);
     if (!result.success) {
       setError(result.error.errors[0].message);
