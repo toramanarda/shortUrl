@@ -44,7 +44,7 @@ const LinkArea = () => {
     <div className="linkArea">
       <form id="link-form" onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="url"
           id="link-input"
           placeholder="Shorten a link here..."
           value={longUrl}
