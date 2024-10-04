@@ -25,7 +25,6 @@ const LinkArea = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [qrText, setQrText] = useState('');
 
-  // LocalStorage'dan verileri oku
   useEffect(() => {
     const storedUrls = JSON.parse(localStorage.getItem('shortUrls')) || [];
     setShortUrls(storedUrls);
@@ -61,10 +60,9 @@ const LinkArea = () => {
         const newShortUrl = { longUrl, shortUrl: generatedShortUrl };
         const updatedShortUrls = [...shortUrls, newShortUrl];
 
-        // LocalStorage'a kaydet
         localStorage.setItem('shortUrls', JSON.stringify(updatedShortUrls));
         setShortUrls(updatedShortUrls);
-        setLongUrl(''); // Inputu temizle
+        setLongUrl(''); 
       } else {
         throw new Error('Short URL oluşturulamadı');
       }
@@ -108,7 +106,7 @@ const LinkArea = () => {
             </a>
             <div onClick={() => openModal(`${window.location.origin}/${url.shortUrl}`)}>
               <Canvas
-                text={`${window.location.origin}/${url.shortUrl}`} // QR code for the shortened URL
+                text={`${window.location.origin}/${url.shortUrl}`} 
                 options={{
                   errorCorrectionLevel: 'M',
                   margin: 3,
@@ -135,7 +133,7 @@ const LinkArea = () => {
             errorCorrectionLevel: 'M',
             margin: 3,
             scale: 4,
-            width: 200, // Modal içinde daha büyük gösterim
+            width: 200, 
             color: {
               dark: '#000',
               light: '#fff',
