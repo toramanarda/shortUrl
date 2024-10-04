@@ -47,8 +47,8 @@ const LinkArea = () => {
       const response = await fetch("https://szatjmdyotqigrrlrrsb.supabase.co/rest/v1/urls", {
         method: "POST",
         headers: {
-          "apikey": "your_api_key_here", // API anahtarınızı buraya ekleyin
-          "Authorization": "Bearer your_bearer_token_here", // Bearer tokenınızı buraya ekleyin
+          "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXRqbWR5b3RxaWdycmxycnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc4MDI2NjUsImV4cCI6MjA0MzM3ODY2NX0.QcXRZ82w4MCZ_UlpAsZCxHLlAgoHh6YNz3FYC9d6MW8", 
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6YXRqbWR5b3RxaWdycmxycnNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc4MDI2NjUsImV4cCI6MjA0MzM3ODY2NX0.QcXRZ82w4MCZ_UlpAsZCxHLlAgoHh6YNz3FYC9d6MW8", 
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
